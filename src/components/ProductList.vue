@@ -1,27 +1,32 @@
 <template>
   <section class="products-container">
-    <div v-if="products && products.length" class="products">
-      <div class="product" v-for="(product, index) in products" :key="index">
-        <router-link to="/">
-          <img
-            v-if="product.photos"
-            :src="product.photos[0].src"
-            :alt="product.fotos[0].title"
-          />
-          <p class="price">{{ product.price }}</p>
-          <h2 class="title">{{ product.name }}</h2>
-          <p>{{ product.description }}</p>
-        </router-link>
+    <transition mode="out-in">
+      <div v-if="products && products.length" class="products" key="products">
+        <div class="product" v-for="(product, index) in products" :key="index">
+          <router-link to="/">
+            <img
+              v-if="product.photos"
+              :src="product.photos[0].src"
+              :alt="product.fotos[0].title"
+            />
+            <p class="price">{{ product.price }}</p>
+            <h2 class="title">{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+          </router-link>
+        </div>
+        <ProductsPage
+          class="pages"
+          :productsTotal="productsTotal"
+          :productsPerPage="productsPerPage"
+        />
       </div>
-      <ProductsPage
-        class="pages"
-        :productsTotal="productsTotal"
-        :productsPerPage="productsPerPage"
-      />
-    </div>
-    <div v-else-if="products && products.length === 0">
-      <p class="no-results">Busca sem resultados. Tente buscar outro termo.</p>
-    </div>
+      <div v-else-if="products && products.length === 0" key="no-results">
+        <p class="no-results">
+          Busca sem resultados. Tente buscar outro termo.
+        </p>
+      </div>
+      <Loading key="loading" />
+    </transition>
   </section>
 </template>
 
@@ -38,7 +43,7 @@ export default {
   data() {
     return {
       products: null,
-      productsPerPage: 3,
+      productsPerPage: 9,
       productsTotal: 0,
     };
   },
@@ -52,6 +57,7 @@ export default {
 
   methods: {
     getProducts() {
+      this.products = null;
       api.get(this.url).then((response) => {
         this.productsTotal = Number(response.headers['x-total-count']);
         this.products = response.data;
