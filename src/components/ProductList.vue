@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { api } from '@/services.js';
 
 export default {
   data() {
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getProducts() {
-      axios.get('http://localhost:3000/product').then((response) => {
+      api.get('/product').then((response) => {
         this.products = response.data;
       });
     },
