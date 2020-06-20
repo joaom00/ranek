@@ -1,6 +1,6 @@
 <template>
   <ul v-if="pagesTotal > 1">
-    <li v-for="page in pagesTotal" :key="page">
+    <li v-for="page in pages" :key="page">
       <router-link :to="{ query: query(page) }">{{ page }}</router-link>
     </li>
   </ul>
@@ -29,6 +29,23 @@ export default {
   },
 
   computed: {
+    pages() {
+      const current = Number(this.$route.query._page);
+      const range = 5;
+      const offset = Math.ceil(range / 2);
+      const total = this.pagesTotal;
+      const pagesArray = [];
+
+      for (let i = 1; i <= total; i++) {
+        pagesArray.push(i);
+      }
+
+      pagesArray.splice(0, current - offset);
+      pagesArray.splice(range, total);
+
+      return pagesArray;
+    },
+
     pagesTotal() {
       const total = this.productsTotal / this.productsPerPage;
       return total !== Infinity ? Math.ceil(total) : 0;

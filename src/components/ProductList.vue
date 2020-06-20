@@ -14,6 +14,7 @@
         </router-link>
       </div>
       <ProductsPage
+        class="pages"
         :productsTotal="productsTotal"
         :productsPerPage="productsPerPage"
       />
@@ -37,7 +38,7 @@ export default {
   data() {
     return {
       products: null,
-      productsPerPage: 4,
+      productsPerPage: 3,
       productsTotal: 0,
     };
   },
@@ -89,6 +90,11 @@ export default {
   background: #fff;
   border-radius: 4px;
   transition: all 0.2s;
+}
+
+.pages {
+  margin-top: 40px;
+  justify-self: center;
 }
 
 .product:hover {
