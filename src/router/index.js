@@ -52,7 +52,7 @@ const routes = [
       },
       {
         path: 'editar',
-        name: 'User-Edit',
+        name: 'Edit-User',
         component: () =>
           import(/* webpackChunkName: "Login" */ '../pages/User/UserEdit.vue'),
       },

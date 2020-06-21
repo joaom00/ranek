@@ -6,7 +6,7 @@
         <li><router-link :to="{ name: 'Purchases' }">Compras</router-link></li>
         <li><router-link :to="{ name: 'Sales' }">Vendas</router-link></li>
         <li>
-          <router-link :to="{ name: 'User-Edit' }">Editar Usuário</router-link>
+          <router-link :to="{ name: 'Edit-User' }">Editar Usuário</router-link>
         </li>
         <li><button @click="logout">Deslogar</button></li>
       </ul>

@@ -1,4 +1,50 @@
 {
+  "transaction": [
+    {
+      "buyer_id": "joao@origamid.com",
+      "seller_id": "joao@origamid.com",
+      "product": {
+        "id": "notebook",
+        "name": "Notebook",
+        "user_id": "joao@origamid.com",
+        "price": "4999",
+        "sold": "false",
+        "description": "Esse é um novo notebook.",
+        "photos": null
+      },
+      "address": {
+        "cep": "12345678",
+        "street": "Rua Ali Perto",
+        "number": "150",
+        "neighborhood": "Ali Perto",
+        "city": "Rio de Janeiro",
+        "uf": "RJ"
+      },
+      "id": 1
+    },
+    {
+      "buyer_id": "teste@gmail.com",
+      "seller_id": "joao@origamid.com",
+      "product": {
+        "id": "notebook",
+        "name": "Notebook",
+        "user_id": "joao@origamid.com",
+        "price": "4999",
+        "sold": "false",
+        "description": "Esse é um novo notebook.",
+        "photos": null
+      },
+      "address": {
+        "cep": "22020001",
+        "street": "Avenida Nossa Senhora de Copacabana",
+        "number": "99",
+        "neighborhood": "Copacabana",
+        "city": "Rio de Janeiro",
+        "uf": "RJ"
+      },
+      "id": 2
+    }
+  ],
   "user": [
     {
       "id": "joao@origamid.com",
@@ -44,6 +90,18 @@
       "street": "Avenida das Américas",
       "number": "100",
       "neighborhood": "Barra da Tijuca",
+      "uf": "RJ",
+      "city": "Rio de Janeiro"
+    },
+    {
+      "id": "teste@gmail.com",
+      "name": "João Teste",
+      "email": "teste@gmail.com",
+      "password": "123",
+      "cep": "22020001",
+      "street": "Avenida Nossa Senhora de Copacabana",
+      "number": "99",
+      "neighborhood": "Copacabana",
       "uf": "RJ",
       "city": "Rio de Janeiro"
     }
