@@ -2,12 +2,13 @@
   "user": [
     {
       "id": "joao@origamid.com",
-      "email": "joao@origamid.com",
       "name": "João Pedro",
+      "email": "joao@origamid.com",
       "password": "123",
-      "street": "Rua Ali Perto",
       "cep": "12345678",
-      "number": "25",
+      "street": "Rua Ali Perto",
+      "number": "150",
+      "neighborhood": "Ali Perto",
       "uf": "RJ",
       "city": "Rio de Janeiro"
     },
