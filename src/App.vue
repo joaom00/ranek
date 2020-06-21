@@ -57,6 +57,11 @@ img {
   display: block;
 }
 
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
 .btn {
   display: block;
   padding: 10px 30px;

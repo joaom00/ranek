@@ -454,31 +454,20 @@
       "photos": null
     },
     {
-      "id": "notebook",
-      "name": "Notebook",
-      "user_id": "joao@origamid.com",
-      "price": "4999",
-      "sold": "false",
-      "description": "Esse é um novo notebook.",
-      "photos": null
-    },
-    {
-      "id": "smartphone",
-      "name": "Smartphone",
-      "user_id": "joao@origamid.com",
-      "price": "1999",
-      "sold": "false",
-      "description": "Esse é um novo smartphone.",
-      "photos": null
-    },
-    {
-      "id": "tablet",
       "name": "Tablet",
-      "user_id": "joao@origamid.com",
-      "price": "1399",
-      "sold": "false",
-      "description": "Esse é um novo tablet.",
-      "photos": null
+      "price": "2345",
+      "description": "Esse é um tablet novo.",
+      "photos": null,
+      "user_id": "maria@origamid.com",
+      "id": "GjFXV0O"
+    },
+    {
+      "name": "Redmi note 9",
+      "price": "4248",
+      "description": "Redmi note 9 Novo",
+      "photos": null,
+      "user_id": "maria@origamid.com",
+      "id": "_XV0tAI"
     }
   ]
 }
