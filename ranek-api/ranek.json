@@ -21,6 +21,30 @@
       "number": "25",
       "uf": "RJ",
       "city": "Rio de Janeiro"
+    },
+    {
+      "id": "maria@origamid.com",
+      "name": "Maria das Neves",
+      "email": "maria@origamid.com",
+      "password": "123",
+      "cep": "22640102",
+      "street": "Avenida das Américas",
+      "number": "100",
+      "neighborhood": "Barra da Tijuca",
+      "uf": "RJ",
+      "city": "Rio de Janeiro"
+    },
+    {
+      "id": "mariana@origamid.com",
+      "name": "Mariana",
+      "email": "mariana@origamid.com",
+      "password": "123",
+      "cep": "22640102",
+      "street": "Avenida das Américas",
+      "number": "100",
+      "neighborhood": "Barra da Tijuca",
+      "uf": "RJ",
+      "city": "Rio de Janeiro"
     }
   ],
   "product": [
