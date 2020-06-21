@@ -25,9 +25,38 @@ const routes = [
   },
   {
     path: '/usuario',
-    name: 'User',
     component: () =>
       import(/* webpackChunkName: "Login" */ '../pages/User/User.vue'),
+    children: [
+      {
+        path: '',
+        name: 'User',
+        component: () =>
+          import(
+            /* webpackChunkName: "Login" */ '../pages/User/UserProducts.vue'
+          ),
+      },
+      {
+        path: 'compras',
+        name: 'Purchases',
+        component: () =>
+          import(
+            /* webpackChunkName: "Login" */ '../pages/User/UserPurchase.vue'
+          ),
+      },
+      {
+        path: 'vendas',
+        name: 'Sales',
+        component: () =>
+          import(/* webpackChunkName: "Login" */ '../pages/User/UserSale.vue'),
+      },
+      {
+        path: 'editar',
+        name: 'User-Edit',
+        component: () =>
+          import(/* webpackChunkName: "Login" */ '../pages/User/UserEdit.vue'),
+      },
+    ],
   },
 ];
 
