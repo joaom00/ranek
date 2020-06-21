@@ -10,6 +10,17 @@
       "number": "25",
       "uf": "RJ",
       "city": "Rio de Janeiro"
+    },
+    {
+      "id": "pedro@origamid.com",
+      "email": "pedro@origamid.com",
+      "name": "Pedro João",
+      "password": "123",
+      "street": "Rua Ali Perto",
+      "cep": "12345678",
+      "number": "25",
+      "uf": "RJ",
+      "city": "Rio de Janeiro"
     }
   ],
   "product": [

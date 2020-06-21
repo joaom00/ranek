@@ -1,12 +1,17 @@
 <template>
   <section class="login">
     <h1>Login</h1>
-    <form @submit.prevent="doLogin">
+    <form @submit.prevent="submit">
       <label for="email">E-mail</label>
-      <input type="email" name="email" id="email" v-model="email" />
+      <input type="email" name="email" id="email" v-model="form.email" />
       <label for="password">Senha</label>
-      <input type="password" name="password" id="password" v-model="password" />
-      <button type="submit" class="btn">Logar</button>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        v-model="form.password"
+      />
+      <button class="btn">Logar</button>
     </form>
     <p class="forgotPassword">
       <a href="/" target="_blank">Perdeu a senha? Clique aqui.</a>
@@ -26,13 +31,18 @@ export default {
 
   data() {
     return {
-      email: '',
-      password: '',
+      form: {
+        email: '',
+        password: '',
+      },
     };
   },
 
   methods: {
-    doLogin() {},
+    submit() {
+      this.$store.dispatch('getUser', this.form.email);
+      this.$router.push({ name: 'User' });
+    },
   },
 };
 </script>

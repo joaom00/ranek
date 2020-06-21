@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../pages/Home.vue';
-import Product from '../pages/Product.vue';
-import Login from '../pages/Login.vue';
 
 Vue.use(VueRouter);
 
@@ -10,18 +7,27 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: () =>
+      import(/* webpackChunkName: "Product" */ '../pages/Home.vue'),
   },
   {
     path: '/produto/:id',
     name: 'Product',
-    component: Product,
     props: true,
+    component: () =>
+      import(/* webpackChunkName: "Product" */ '../pages/Product.vue'),
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login,
+    component: () =>
+      import(/* webpackChunkName: "Login" */ '../pages/Login.vue'),
+  },
+  {
+    path: '/usuario',
+    name: 'User',
+    component: () =>
+      import(/* webpackChunkName: "Login" */ '../pages/User/User.vue'),
   },
 ];
 
