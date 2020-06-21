@@ -11,7 +11,7 @@
     <label for="street">Rua</label>
     <input id="street" name="street" type="text" v-model="street" />
     <label for="number">Número</label>
-    <input id="number" name="number" type="text" v-model="email" />
+    <input id="number" name="number" type="text" v-model="number" />
     <label for="neighborhood">Bairro</label>
     <input
       id="neighborhood"
@@ -30,7 +30,27 @@
 </template>
 
 <script>
-export default {};
+import { mapFields } from '@/helpers.js';
+
+export default {
+  computed: {
+    ...mapFields({
+      fields: [
+        'name',
+        'email',
+        'password',
+        'street',
+        'cep',
+        'number',
+        'neighborhood',
+        'city',
+        'uf',
+      ],
+      base: 'user',
+      mutation: 'UPDATE_USER',
+    }),
+  },
+};
 </script>
 
 <style scoped>
