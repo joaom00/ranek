@@ -34,7 +34,7 @@ export const api = {
     return axios.post('http://ranekapi.local/wp-json/jwt-auth/v1/token', body);
   },
   validateToken() {
-    return axios.post(
+    return axiosInstance.post(
       'http://ranekapi.local/wp-json/jwt-auth/v1/token/validate'
     );
   },

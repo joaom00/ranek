@@ -13,11 +13,24 @@
 <script>
 import TheHeader from '@/components/TheHeader';
 import TheFooter from '@/components/TheFooter';
+import { api } from '@/services.js';
 
 export default {
   components: {
     TheHeader,
     TheFooter,
+  },
+  created() {
+    if (window.localStorage.token) {
+      api
+        .validateToken()
+        .then(() => {
+          this.$store.dispatch('getUser');
+        })
+        .catch(() => {
+          window.localStorage.removeItem('token');
+        });
+    }
   },
 };
 </script>

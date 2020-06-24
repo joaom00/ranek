@@ -33,7 +33,8 @@ export default {
     async createUser() {
       try {
         await this.$store.dispatch('createUser', this.$store.state.user);
-        await this.$store.dispatch('getUser', this.$store.state.user.email);
+        await this.$store.dispatch('userLogin', this.$store.state.user);
+        await this.$store.dispatch('getUser');
         this.$router.push({ name: 'User' });
       } catch (err) {
         console.log(err);
