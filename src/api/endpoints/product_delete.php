@@ -23,6 +23,7 @@ function api_product_delete($request) {
   } else {
     $response = new WP_Error('permission', 'Usuário não possui permissão.', array('status' => 401));
   }
+
   return rest_ensure_response($response);
 
 }

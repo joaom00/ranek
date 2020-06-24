@@ -40,8 +40,10 @@ export default {
 
   methods: {
     submit() {
-      this.$store.dispatch('getUser', this.form.email);
-      this.$router.push({ name: 'User' });
+      this.$store.dispatch('userLogin', this.form).then(() => {
+        this.$store.dispatch('getUser');
+        this.$router.push({ name: 'User' });
+      });
     },
   },
 };

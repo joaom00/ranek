@@ -5,7 +5,7 @@ function register_cpt_product() {
     'label' => 'Product',
     'description' => 'Product',
     'public' => true,
-    'show-ui' => true,
+    'show_ui' => true,
     'capability_type' => 'post',
     'rewrite' => array('slug' => 'product', 'with_front' => true),
     'query_var' => true,

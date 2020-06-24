@@ -30,10 +30,11 @@ function api_transaction_post($request) {
     );
 
     $post_id = wp_insert_post($response);
-
+    
   } else {
     $response = new WP_Error('permission', 'Usuário não possui permissão.', array('status' => 401));
   }
+
   return rest_ensure_response($response);
 }
 

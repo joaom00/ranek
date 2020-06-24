@@ -8,7 +8,7 @@ function api_product_post($request) {
     $name = sanitize_text_field($request['name']);
     $price = sanitize_text_field($request['price']);
     $description = sanitize_text_field($request['description']);
-    $user_id = $user->user_login;
+    $usuario_id = $user->user_login;
 
     $response = array(
       'post_author' => $user_id,
@@ -19,13 +19,12 @@ function api_product_post($request) {
         'name' => $name,
         'price' => $price,
         'description' => $description,
-        'user_id' => $user_id,
+        'user_id' => $usuario_id,
         'sold' => 'false',
       ),
     );
 
     $product_id = wp_insert_post($response);
-
     $response['id'] = get_post_field('post_name', $product_id);
 
     $files = $request->get_file_params();

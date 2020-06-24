@@ -5,7 +5,7 @@ function register_cpt_transaction() {
     'label' => 'Transaction',
     'description' => 'Transaction',
     'public' => true,
-    'show-ui' => true,
+    'show_ui' => true,
     'capability_type' => 'post',
     'rewrite' => array('slug' => 'transaction', 'with_front' => true),
     'query_var' => true,
