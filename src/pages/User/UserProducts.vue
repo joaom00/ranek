@@ -13,6 +13,7 @@
         </ProductItem>
       </li>
     </transition-group>
+    <Loading v-else />
   </section>
 </template>
 

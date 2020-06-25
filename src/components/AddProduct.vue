@@ -15,7 +15,7 @@
     <input
       class="btn"
       type="button"
-      value="Add Product"
+      value="Adicionar Produto"
       @click.prevent="addProduct"
     />
   </form>
@@ -56,11 +56,18 @@ export default {
       return form;
     },
 
-    addProduct() {
+    async addProduct(event) {
       const product = this.formatProduct();
-      api.post('/product', product).then(() => {
-        this.$store.dispatch('getUserProducts');
-      });
+
+      const button = event.currentTarget;
+      button.value = 'Adicionando...';
+      button.setAttribute('disabled', '');
+
+      await api.post('/product', product);
+      await this.$store.dispatch('getUserProducts');
+
+      button.removeAttribute('disabled');
+      button.value = 'Adicionar Produto';
     },
   },
 };

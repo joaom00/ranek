@@ -45,17 +45,15 @@ export default {
   },
 
   methods: {
-    submit() {
+    async submit() {
       this.errors = [];
-      this.$store
-        .dispatch('userLogin', this.form)
-        .then(() => {
-          this.$store.dispatch('getUser');
-          this.$router.push({ name: 'User' });
-        })
-        .catch((err) => {
-          this.errors.push(err.response.data.message);
-        });
+      try {
+        await this.$store.dispatch('userLogin', this.form);
+        await this.$store.dispatch('getUser');
+        await this.$router.push({ name: 'User' });
+      } catch (err) {
+        this.errors.push(err.response.data.message);
+      }
     },
   },
 };

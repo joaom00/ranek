@@ -12,6 +12,7 @@
         </ProductItem>
       </div>
     </div>
+    <Loading v-else />
   </section>
 </template>
 
