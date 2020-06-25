@@ -127,4 +127,12 @@ export default {
 .no-results {
   text-align: center;
 }
+
+@media screen and (max-width: 500px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin: 10px;
+  }
+}
 </style>

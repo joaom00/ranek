@@ -70,6 +70,15 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin: 0;
+  justify-self: end;
+}
+
 .product-wrapper {
   margin-bottom: 40px;
 }
@@ -85,12 +94,14 @@ export default {
   margin-bottom: 60px;
 }
 
-h2 {
-  margin-bottom: 20px;
-}
+@media screen and (max-width: 500px) {
+  h3 {
+    justify-self: start;
+  }
 
-h3 {
-  margin: 0;
-  justify-self: end;
+  .delivery {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
 }
 </style>
