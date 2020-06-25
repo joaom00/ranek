@@ -9,7 +9,6 @@
         :src="product.photos[0].src"
         :alt="product.photos[0].title"
       />
-      <p>Ver Produto</p>
     </router-link>
     <div class="info">
       <p class="price">{{ product.price | priceConvert }}</p>
