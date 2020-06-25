@@ -58,7 +58,6 @@ export default {
 
     async addProduct(event) {
       const product = this.formatProduct();
-
       const button = event.currentTarget;
       button.value = 'Adicionando...';
       button.setAttribute('disabled', '');

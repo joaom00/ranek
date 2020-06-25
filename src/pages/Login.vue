@@ -40,7 +40,7 @@ export default {
         email: '',
         password: '',
       },
-      erros: [],
+      errors: [],
     };
   },
 

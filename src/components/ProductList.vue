@@ -7,7 +7,7 @@
             <img
               v-if="product.photos"
               :src="product.photos[0].src"
-              :alt="product.fotos[0].title"
+              :alt="product.photos[0].title"
             />
             <p class="price">{{ product.price | priceConvert }}</p>
             <h2 class="title">{{ product.name }}</h2>
