@@ -25,6 +25,9 @@ const routes = [
   },
   {
     path: '/usuario',
+    meta: {
+      login: true,
+    },
     component: () =>
       import(/* webpackChunkName: "Login" */ '../pages/User/User.vue'),
     children: [
@@ -67,6 +70,18 @@ const router = new VueRouter({
   scrollBehavior() {
     return window.scrollTo({ top: 0, behavior: 'smooth' });
   },
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.login)) {
+    if (!window.localStorage.token) {
+      next('/login');
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
