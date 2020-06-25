@@ -12,9 +12,14 @@
         v-model="form.password"
       />
       <button class="btn">Logar</button>
+      <ErrorNotification :errors="errors" />
     </form>
     <p class="forgotPassword">
-      <a href="/" target="_blank">Perdeu a senha? Clique aqui.</a>
+      <a
+        href="http://ranekapi.local/wp-login.php?action=lostpassword"
+        target="_blank"
+        >Perdeu a senha? Clique aqui.</a
+      >
     </p>
     <SignUp />
   </section>
@@ -35,15 +40,22 @@ export default {
         email: '',
         password: '',
       },
+      erros: [],
     };
   },
 
   methods: {
     submit() {
-      this.$store.dispatch('userLogin', this.form).then(() => {
-        this.$store.dispatch('getUser');
-        this.$router.push({ name: 'User' });
-      });
+      this.errors = [];
+      this.$store
+        .dispatch('userLogin', this.form)
+        .then(() => {
+          this.$store.dispatch('getUser');
+          this.$router.push({ name: 'User' });
+        })
+        .catch((err) => {
+          this.errors.push(err.response.data.message);
+        });
     },
   },
 };

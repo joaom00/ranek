@@ -1,6 +1,7 @@
 <template>
   <section>
     <h2>Endereço de Envio</h2>
+    <ErrorNotification :errors="errors" />
     <UserForm>
       <button class="btn" @click.prevent="checkout">Finalizar Compra</button>
     </UserForm>
@@ -17,6 +18,11 @@ export default {
   props: ['product'],
   components: {
     UserForm,
+  },
+  data() {
+    return {
+      errors: [],
+    };
   },
 
   computed: {
@@ -52,11 +58,12 @@ export default {
         await this.$store.dispatch('getUser');
         await this.createTransaction();
       } catch (err) {
-        console.log(err);
+        this.errors.push(err.response.data.message);
       }
     },
 
     checkout() {
+      this.errors = [];
       if (this.$store.state.login) {
         this.createTransaction();
       } else {
