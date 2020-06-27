@@ -3,7 +3,14 @@
     <h2>Endereço de Envio</h2>
     <ErrorNotification :errors="errors" />
     <UserForm>
-      <button class="btn" @click.prevent="checkout">Finalizar Compra</button>
+      <template v-if="loading">
+        <button disabled class="btn">
+          <LoadingButton />
+        </button>
+      </template>
+      <template v-else>
+        <button class="btn" @click.prevent="checkout">Finalizar Compra</button>
+      </template>
     </UserForm>
   </section>
 </template>
@@ -21,6 +28,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       errors: [],
     };
   },
@@ -46,19 +54,24 @@ export default {
 
   methods: {
     createTransaction() {
+      this.loading = true;
       return api.post('/transaction', this.buy).then(() => {
         this.$router.push({ name: 'Purchases' });
+        this.loading = false;
       });
     },
 
     async createUser() {
       try {
+        this.loading = true;
         await this.$store.dispatch('createUser', this.$store.state.user);
         await this.$store.dispatch('userLogin', this.$store.state.user);
         await this.$store.dispatch('getUser');
         await this.createTransaction();
+        this.loading = false;
       } catch (err) {
         this.errors.push(err.response.data.message);
+        this.loading = false;
       }
     },
 
@@ -82,5 +95,9 @@ h2 {
 
 .btn {
   background: #e80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
 }
 </style>

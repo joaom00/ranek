@@ -1,7 +1,7 @@
 <template>
   <transition>
     <ul class="erro" v-if="errors.length > 0">
-      <li v-for="(erro, index) in erros" :key="index" v-html="erro"></li>
+      <li v-for="(erro, index) in errors" :key="index" v-html="erro"></li>
     </ul>
   </transition>
 </template>

@@ -7,9 +7,16 @@
         Criar Conta
       </button>
       <UserForm v-else>
-        <button class="btn btn-form" @click.prevent="createUser">
-          Criar Usuário
-        </button>
+        <template v-if="loading">
+          <button disabled class="btn btn-form">
+            <LoadingButton />
+          </button>
+        </template>
+        <template v-else>
+          <button class="btn btn-form" @click.prevent="createUser">
+            Criar Usuário
+          </button>
+        </template>
       </UserForm>
     </transition>
   </section>
@@ -27,25 +34,24 @@ export default {
   data() {
     return {
       create: false,
+      loading: false,
       errors: [],
     };
   },
 
   methods: {
-    async createUser(event) {
+    async createUser() {
       this.errors = [];
-      const button = event.currentTarget;
-      button.value = 'Criando...';
-      button.setAttribute('disabled', '');
       try {
+        this.loading = true;
         await this.$store.dispatch('createUser', this.$store.state.user);
         await this.$store.dispatch('userLogin', this.$store.state.user);
         await this.$store.dispatch('getUser');
         this.$router.push({ name: 'User' });
+        this.loading = false;
       } catch (err) {
-        button.removeAttribute('disabled');
-        button.value = 'Criar Usuário';
         this.errors.push(err.response.data.message);
+        this.loading = false;
       }
     },
   },
@@ -63,6 +69,9 @@ h2 {
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-form {

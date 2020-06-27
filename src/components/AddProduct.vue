@@ -12,12 +12,17 @@
       id="description"
       v-model="product.description"
     ></textarea>
-    <input
-      class="btn"
-      type="button"
-      value="Adicionar Produto"
-      @click.prevent="addProduct"
-    />
+    <template v-if="loading">
+      <button disabled class="btn" @click.prevent="addProduct">
+        <LoadingButton />
+      </button>
+    </template>
+    <template v-else>
+      <button class="btn" @click.prevent="addProduct">
+        Adicionar Produto
+      </button>
+    </template>
+    <ErrorNotification class="error" :errors="errors" />
   </form>
 </template>
 
@@ -28,6 +33,8 @@ export default {
   name: 'AddProduct',
   data() {
     return {
+      loading: false,
+      errors: [],
       product: {
         name: '',
         price: '',
@@ -56,17 +63,22 @@ export default {
       return form;
     },
 
-    async addProduct(event) {
-      const product = this.formatProduct();
-      const button = event.currentTarget;
-      button.value = 'Adicionando...';
-      button.setAttribute('disabled', '');
+    async addProduct() {
+      try {
+        const product = this.formatProduct();
+        this.loading = true;
 
-      await api.post('/product', product);
-      await this.$store.dispatch('getUserProducts');
+        await api.post('/product', product);
+        await this.$store.dispatch('getUserProducts');
 
-      button.removeAttribute('disabled');
-      button.value = 'Adicionar Produto';
+        this.loading = false;
+      } catch (err) {
+        this.errors.push(err.response.data.message);
+        this.loading = false;
+        setTimeout(() => {
+          this.errors = [];
+        }, 3500);
+      }
     },
   },
 };
@@ -81,6 +93,13 @@ export default {
 }
 
 .btn {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
   grid-column: 2;
 }
 </style>

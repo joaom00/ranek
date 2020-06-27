@@ -3,11 +3,13 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import Loading from '@/components/Loading';
+import LoadingButton from '@/components/LoadingButton';
 import ErrorNotification from '@/components/ErrorNotification';
 
 Vue.config.productionTip = false;
 
 Vue.component('Loading', Loading);
+Vue.component('LoadingButton', LoadingButton);
 Vue.component('ErrorNotification', ErrorNotification);
 
 Vue.filter('priceConvert', (value) => {
